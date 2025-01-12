@@ -1,0 +1,44 @@
+{
+  "choices":{
+    "0":[
+      {"choice":"Forward",  "value" : "1"},
+      {"choice":"Left",     "value" : "2"},
+      {"choice":"Right",    "value" : "3"}
+    ],
+    "1":[
+      {"choice":"Forward",  "value" : "4"},
+      {"choice":"Left",     "value" : "5"},
+      {"choice":"Right",    "value" : "6"}
+
+    ],
+    "2":[
+      {"choice":"test",       "value" : "7"},
+      {"choice":"test2",      "value" : "8"},
+      {"choice":"test3",      "value" : "9"}
+    ],
+    "3":[
+      {"choice":"test",       "value" : "10"},
+      {"choice":"test2",      "value" : "11"},
+      {"choice":"test3",      "value" : "12"}
+    ],
+    "4":[
+      {"choice":"test",       "value" : "13"},
+      {"choice":"test2",      "value" : "14"},
+      {"choice":"test3",      "value" : "15"}
+    ],
+    "5":[
+      {"choice":"Finished", "value"  : "16"},
+      {"choice":"",      "value" : "16"},
+      {"choice":"",      "value" : "16"}
+    ]
+  },
+  "outputs":[
+    {"output":"You are facing the woods", "value" : "0"},
+    {"output":"You are in the woods.",    "value" : "1"},
+    {"output":"You see a hut.",           "value" : "2"},
+    {"output":"You see a river.",         "value" : "3"},
+    {"output":"You see a bridge",         "value" : "4"},
+    {"output": "This is a longer form of text to see how the formatting looks once the text is longer", "value" : "5"}
+  ]
+
+}

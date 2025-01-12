@@ -1,0 +1,29 @@
+body {
+  background: #2a292b;
+  color: #bfbec0;
+  font-family:ubuntu, sans-serif;
+  text-align:center;
+}
+
+input {
+  all: unset;
+  background: lightgrey;
+  color: black;
+  padding: 3px;
+  margin: 2px;
+}
+
+h1 {
+  color:#f58989;
+
+}
+.option-box p {
+  border-bottom:dotted;
+}
+ul {
+  padding:5px;
+  list-style-type:none;
+}
+li {
+  padding: 8px;
+}

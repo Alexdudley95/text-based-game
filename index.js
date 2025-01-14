@@ -9,6 +9,7 @@
 var inputVal = 0;
 var outputVal = 0;
 var output = $("#output");
+var keyCollected = false;
 
 //set first choices & output label
 $(document).ready(function(){
@@ -47,30 +48,34 @@ function actionSubmitted(input){
   let third = $("#third").html();
 
 
+
   //compare input to current actions
   $.getJSON("main.json", function(data){
+    if(keyCollected == true && !input.localeCompare("collect key and return", undefined, {sensitivity:'accent'})){
+      console.log("here");
+    }
+    
     if(!input.localeCompare(first, undefined, {sensitivity:'accent'})){
+      if(first == "Collect key and return" && !keyCollected){
+        keyCollected = true;
+        console.log("Key collected");
+        $("#keyLabel").text("You have a key");
 
-      outputVal = data.choices[inputVal][0].value;
-      output.text(data.outputs[outputVal].output);
-      inputVal = data.outputs[outputVal].value;
-      updateSelector(inputVal);
-      console.log(outputVal);
+        updateOutput(0, 0, 0);
+
+      }else{
+        updateOutput(inputVal, 0, outputVal);
+        console.log(outputVal);
+      }
 
     }else if (!input.localeCompare(second, undefined, {sensitivity:'accent'})){
 
-      outputVal = data.choices[inputVal][1].value;
-      output.text(data.outputs[outputVal].output);
-      inputVal = data.outputs[outputVal].value;
-      updateSelector(inputVal);
+      updateOutput(inputVal, 1, outputVal);
       console.log(outputVal);
 
     }else if(!input.localeCompare(third, undefined, {sensitivity:'accent'})){
 
-      outputVal = data.choices[inputVal][2].value;
-      output.text(data.outputs[outputVal].output);
-      inputVal = data.outputs[outputVal].value;
-      updateSelector(inputVal);
+      updateOutput(inputVal, 2, outputVal);
       console.log(outputVal);
 
     }
@@ -79,6 +84,7 @@ function actionSubmitted(input){
   });
 }
 
+//set the choices 
 function updateSelector(inputVal){
 
     $.getJSON("main.json", function(data){
@@ -88,4 +94,17 @@ function updateSelector(inputVal){
     }).fail(function(){
         console.log("An error has occurred.");
     });
+  }
+//set the text and update choices based on text
+  function updateOutput(inoutVal, choice, outputVal){
+
+    $.getJSON("main.json", function(data){
+      outputVal = data.choices[inputVal][choice].value;
+      output.text(data.outputs[outputVal].output);
+      inputVal = data.outputs[outputVal].value;
+      updateSelector(inputVal);
+    }).fail(function(){
+      console.log("An error has occurred.");
+    });
+
   }

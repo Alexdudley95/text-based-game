@@ -29,7 +29,7 @@ $(document).ready(function(){
 $(document).on('keypress', function(e){
   if(e.which == '13'){
     var input = $("#input").val();
-    checkActions();
+    // checkActions();
     actionSubmitted(input);
     $("#input").val("");
 
@@ -45,16 +45,16 @@ $(document).on('keypress', function(e){
 //   checkActions();
 // });
 
-function checkActions(){
-  let first = $("first").html();
-  console.log("here");
-  if (first == "Go into hut" && keyCollected == true){
-    console.log("inside");
-    $("#keyLabel").text("You used the key");
-  }
+// // function checkActions(){
+// //   let first = $("first").html();
+// //   console.log("here");
+// //   if (first == "Go into hut" && keyCollected == true){
+// //     console.log("inside");
+// //     $("#keyLabel").text("You used the key");
+// //   }
 
 
-}
+// }
 
 function actionSubmitted(input){
   let first = $("#first").html();
@@ -63,32 +63,35 @@ function actionSubmitted(input){
 
   //compare input to current actions
   $.getJSON("main.json", function(data){
-    if(keyCollected == true && !input.localeCompare("collect key and return", undefined, {sensitivity:'accent'})){
-
-    }
 
     if(!input.localeCompare(first, undefined, {sensitivity:'accent'})){
       if(first == "Collect key and return" && !keyCollected){
         keyCollected = true;
         console.log("Key collected");
         $("#keyLabel").text("You have a key");
-
-        updateOutput(0, 0, 0);
+        outputVal = data.choices[inputVal][0].value;
+        output.text(data.outputs[outputVal].output);
+        inputVal = data.outputs[outputVal].value;
+        updateSelector(inputVal);
 
       }else{
-        updateOutput(inputVal, 0, outputVal);
-        console.log(outputVal);
+        outputVal = data.choices[inputVal][0].value;
+        output.text(data.outputs[outputVal].output);
+        inputVal = data.outputs[outputVal].value;
+        updateSelector(inputVal);
       }
-
     }else if (!input.localeCompare(second, undefined, {sensitivity:'accent'})){
-
-      updateOutput(inputVal, 1, outputVal);
-      console.log(outputVal);
+      outputVal = data.choices[inputVal][1].value;
+      output.text(data.outputs[outputVal].output);
+      inputVal = data.outputs[outputVal].value;
+      updateSelector(inputVal);
 
     }else if(!input.localeCompare(third, undefined, {sensitivity:'accent'})){
 
-      updateOutput(2, outputVal);
-      console.log(outputVal);
+      outputVal = data.choices[inputVal][2].value;
+      output.text(data.outputs[outputVal].output);
+      inputVal = data.outputs[outputVal].value;
+      updateSelector(inputVal);
 
     }
   }).fail(function(){
@@ -109,7 +112,9 @@ function updateSelector(inputVal){
   }
 
 //set the text and update choices based on text
-  function updateOutput(choice, outputVal){
+//this seems to break everything at the moment
+  function updateOutput(inputVal, choice, outputVal){
+    $("#values").text(" " + inputVal + " " + choice + " " + outputVal);
 
     $.getJSON("main.json", function(data){
       outputVal = data.choices[inputVal][choice].value;

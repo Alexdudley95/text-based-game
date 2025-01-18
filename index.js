@@ -29,32 +29,44 @@ $(document).ready(function(){
 $(document).on('keypress', function(e){
   if(e.which == '13'){
     var input = $("#input").val();
+    checkActions();
     actionSubmitted(input);
     $("#input").val("");
+
   }
 })
 
-var submit = $("#inputBut");
+// var submit = $("#inputBut");
 
-submit.on("click", function(){
-  var input = $("#input").val();
-  actionSubmitted(input);
-  $("#input").val("");
-});
+// submit.on("click", function(){
+//   var input = $("#input").val();
+//   actionSubmitted(input);
+//   $("#input").val("");
+//   checkActions();
+// });
+
+function checkActions(){
+  let first = $("first").html();
+  console.log("here");
+  if (first == "Go into hut" && keyCollected == true){
+    console.log("inside");
+    $("#keyLabel").text("You used the key");
+  }
+
+
+}
 
 function actionSubmitted(input){
   let first = $("#first").html();
   let second = $("#second").html();
   let third = $("#third").html();
 
-
-
   //compare input to current actions
   $.getJSON("main.json", function(data){
     if(keyCollected == true && !input.localeCompare("collect key and return", undefined, {sensitivity:'accent'})){
-      console.log("here");
+
     }
-    
+
     if(!input.localeCompare(first, undefined, {sensitivity:'accent'})){
       if(first == "Collect key and return" && !keyCollected){
         keyCollected = true;
@@ -75,7 +87,7 @@ function actionSubmitted(input){
 
     }else if(!input.localeCompare(third, undefined, {sensitivity:'accent'})){
 
-      updateOutput(inputVal, 2, outputVal);
+      updateOutput(2, outputVal);
       console.log(outputVal);
 
     }
@@ -84,7 +96,7 @@ function actionSubmitted(input){
   });
 }
 
-//set the choices 
+//set the choices
 function updateSelector(inputVal){
 
     $.getJSON("main.json", function(data){
@@ -95,8 +107,9 @@ function updateSelector(inputVal){
         console.log("An error has occurred.");
     });
   }
+
 //set the text and update choices based on text
-  function updateOutput(inoutVal, choice, outputVal){
+  function updateOutput(choice, outputVal){
 
     $.getJSON("main.json", function(data){
       outputVal = data.choices[inputVal][choice].value;

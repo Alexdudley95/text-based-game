@@ -12,7 +12,7 @@
 
     ],
     "2":[
-      {"choice":"test",       "value" : "7"},
+      {"choice":"Go into hut",       "value" : "3"},
       {"choice":"test2",      "value" : "8"},
       {"choice":"test3",      "value" : "9"}
     ],

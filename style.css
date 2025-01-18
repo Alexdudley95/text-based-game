@@ -27,3 +27,22 @@ ul {
 li {
   padding: 8px;
 }
+
+#desc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#desc p{
+  max-width: 400px;
+}
+
+button{
+  color:  #bfbec0;
+  width: 150px;
+  height: 50px;
+  background: #2a292b;
+  border-radius: 8px;
+  border: 2px solid;
+  text-decoration: none;
+}

@@ -3,16 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Text based game</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Text based Adventure game</title> <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <h1> Text Based Game</h1>
+  <h1> Text Based Adventure Game</h1>
   <label for="input">Type commands below</label>
   <br>
   <input type= "text" id="input" name="input">
-  <!-- <button type="button" id="inputBut">Submit!</button> -->
+
   <h2 id="output"></h2>
 
   <div class="option-box">
@@ -28,8 +27,23 @@
   <h3 id="keyLabel"></h3>
   <h3 id="values"></h3>
 
+  <br>
+  <button type="button" id="restart">Restart</button>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="index.js"></script>
+
+
+  <div id="desc">
+    <div>
+      <p>This game is a simple JS based game that reads values from a JSON file. I designed it to be fairly small so that
+        I could quickly design the functionality rather than spending time working on the story</p>
+
+    </div>
+  </div>
+
+
+
 </body>
 
 </html>

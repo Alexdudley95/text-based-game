@@ -52,24 +52,6 @@ $(document).on('keypress', function(e){
   }
 })
 
-//this is not working - the else if check always returns negative and doesn't push the input value
-function checkActions(input){
-  let first = $("#first").html();
-  let check = "go into hut"
-  console.log("here");
-  if (!check.localeCompare(first, undefined, {sensitivity:'accent'}) && keyCollected){
-    console.log("inside");
-    $("#keyLabel").text("You used the key");
-    actionSubmitted(input);
-  }else if(!check.localeCompare(first, undefined, {sensitivity:'accent'}) && !keyCollected){
-    $("#keyLabel").text("You need a key");
-    actionSubmitted(input);
-  }else{
-    actionSubmitted(input);
-  }
-}
-
-
 //set the text and update choices based on text
 
 function updateOutput(inVal, choiceVal, outVal){
@@ -92,7 +74,27 @@ function updateOutput(inVal, choiceVal, outVal){
 
 }
 
-
+// used to check if key is needed/is used
+function checkActions(input){
+  let first = $("#first").html();
+  let check = "Go into hut"
+  if (first == check){
+    console.log("inside");
+    if(!input.localeCompare(first, undefined, {sensitivity: 'accent'}) && keyCollected == true){
+      console.log("here");
+      $("#keyLabel").text("You used the key");
+      actionSubmitted(input);
+    }else if(keyCollected == false && !input.localeCompare(first, undefined, {sensitivity: 'accent'})){
+      console.log("second here");
+      $("#keyLabel").text("You need a key");
+      actionSubmitted("go back");
+    }else{
+      actionSubmitted(input);
+    }
+  }else{
+    actionSubmitted(input);
+  }
+}
 
 function actionSubmitted(input){
   let first = $("#first").html();
@@ -105,7 +107,7 @@ function actionSubmitted(input){
       if(first == "Collect key and return" && !keyCollected){
         keyCollected = true;
         console.log("Key collected");
-        $("#keyLabel").text("You have a key" + first);
+        $("#keyLabel").text("You have a key");
         updateOutput(inputVal, choice, outputVal);
 
       }else{

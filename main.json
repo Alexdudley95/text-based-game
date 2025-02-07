@@ -12,7 +12,7 @@
 
     ],
     "2":[
-      {"choice":"Go into hut",       "value" : "3", "keyVal" : "1"},
+      {"choice":"Go into hut",  "value" : "3"},
       {"choice":"Inspect",      "value" : "5"},
       {"choice":"Go Back",      "value" : "0"}
     ],
@@ -38,7 +38,7 @@
     {"output":"You see a hut.",           "value" : "2"},
     {"output":"You see a river.",         "value" : "3"},
     {"output":"You see a bridge",         "value" : "4"},
-    {"output": "The hut is old but welcoming, it appears to be some kind of cabin maybe used by a woodcutter some time ago", "value" : "5"}
+    {"output": "The hut is old but welcoming, it appears to be some kind of cabin maybe used by a woodcutter some time ago", "value" : "2"}
   ]
 
 }

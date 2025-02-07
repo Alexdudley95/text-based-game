@@ -36,6 +36,9 @@ li {
 #desc p{
   max-width: 400px;
 }
+#keyLabel{
+  color: red;
+}
 
 button{
   color:  #bfbec0;

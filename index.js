@@ -28,11 +28,16 @@ function setup(){
   });
 }
 
+//restart button
 var restart = $("#restart");
-
 restart.on("click", function(){
   setup();
-  console.log("hi");
+  inputVal = 0;
+  choice = 0;
+  outputVal = 0;
+  output = $("#output");
+  keyCollected = false;
+  $("#keyLabel").text("");
 });
 setup();
 
@@ -41,21 +46,26 @@ setup();
 $(document).on('keypress', function(e){
   if(e.which == '13'){
     var input = $("#input").val();
-    checkActions();
-    actionSubmitted(input);
+    checkActions(input);
     $("#input").val("");
     $('#values').text("input: "+ inputVal + " choice: " + choice + " outputVal: " + outputVal);
   }
 })
 
-
-function checkActions(){
+//this is not working - the else if check always returns negative and doesn't push the input value
+function checkActions(input){
   let first = $("#first").html();
   let check = "go into hut"
   console.log("here");
   if (!check.localeCompare(first, undefined, {sensitivity:'accent'}) && keyCollected){
     console.log("inside");
     $("#keyLabel").text("You used the key");
+    actionSubmitted(input);
+  }else if(!check.localeCompare(first, undefined, {sensitivity:'accent'}) && !keyCollected){
+    $("#keyLabel").text("You need a key");
+    actionSubmitted(input);
+  }else{
+    actionSubmitted(input);
   }
 }
 
@@ -95,7 +105,7 @@ function actionSubmitted(input){
       if(first == "Collect key and return" && !keyCollected){
         keyCollected = true;
         console.log("Key collected");
-        $("#keyLabel").text("You have a key");
+        $("#keyLabel").text("You have a key" + first);
         updateOutput(inputVal, choice, outputVal);
 
       }else{

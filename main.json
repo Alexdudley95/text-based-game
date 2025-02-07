@@ -7,14 +7,14 @@
     ],
     "1":[
       {"choice":"Collect key and return",  "value" : "0"},
-      {"choice":"",     "value" : "5"},
-      {"choice":"",    "value" : "6"}
+      {"choice":"",     "value" : "0"},
+      {"choice":"",    "value" : "0"}
 
     ],
     "2":[
-      {"choice":"Go into hut",       "value" : "3"},
+      {"choice":"Go into hut",       "value" : "3", "keyVal" : "1"},
       {"choice":"Inspect",      "value" : "5"},
-      {"choice":"Go Back",      "value" : "9"}
+      {"choice":"Go Back",      "value" : "0"}
     ],
     "3":[
       {"choice":"test",       "value" : "10"},

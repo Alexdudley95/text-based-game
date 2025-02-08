@@ -1,7 +1,3 @@
-// TODO:
-// - Add way of making keys work, perhaps in the JSON file, there is another value for keys
-// if the value is 0, no key is needed, if there is a value, it would need to compare with a value in here
-
 // JSon file is formatted as follows:
 // Choices value outputs to the index of the outputs array
 // Output value sends to the specific array within Choices, three choices are then updated from this array
@@ -48,7 +44,7 @@ $(document).on('keypress', function(e){
     var input = $("#input").val();
     checkActions(input);
     $("#input").val("");
-    $('#values').text("input: "+ inputVal + " choice: " + choice + " outputVal: " + outputVal);
+    //$('#values').text("input: "+ inputVal + " choice: " + choice + " outputVal: " + outputVal);
   }
 })
 
@@ -77,7 +73,7 @@ function updateOutput(inVal, choiceVal, outVal){
 // used to check if key is needed/is used
 function checkActions(input){
   let first = $("#first").html();
-  let check = "Go into hut"
+  let check = "Open iron gate"
   if (first == check){
     console.log("inside");
     if(!input.localeCompare(first, undefined, {sensitivity: 'accent'}) && keyCollected == true){

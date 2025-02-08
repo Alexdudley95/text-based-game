@@ -28,6 +28,17 @@ li {
   padding: 8px;
 }
 
+#outputDiv {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+#output {
+  max-width: 700px;
+}
+
 #desc {
   display: flex;
   justify-content: center;
